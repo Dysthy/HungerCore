@@ -38,23 +38,6 @@ A Minecraft plugin for managing **Hunger Games ** events.
 
 ---
 
-## 👥 Teams (Lead-API)
-
-- `/hc teams create <player> <id>` — Create team
-- `/hc teams list` — List teams
-- `/hc teams info <player>` — View team info
-- `/hc teams delete <player>` — Delete team
-- `/hc teams add <player> <leader>` — Add player to team
-- `/hc teams remove <player>` — Remove player from team
-- `/hc teams random <size>` — Create random teams
-
-### Examples
-- `/hc teams random 1` → solo players
-- `/hc teams random 4` → squads of 4
-- `/hc teams random 5` → large teams
-
----
-
 ## 🔤 Placeholders
 
 - `%hc_tribute%` — Tribute number
@@ -70,7 +53,6 @@ A Minecraft plugin for managing **Hunger Games ** events.
 
 - Paper 1.21+
 - PlaceholderAPI (optional)
-- Lead-API (optional, for teams)
 
 ---
 
