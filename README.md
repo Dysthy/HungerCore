@@ -14,7 +14,6 @@ A Minecraft plugin for managing **Hunger Games ** events.
 - Lobby setup
 - Countdown & event timers
 - Death spectator system (players stay where they die)
-- Teams system (Lead-API support)
 - PlaceholderAPI support
 
 ---
