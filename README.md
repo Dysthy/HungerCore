@@ -1,6 +1,6 @@
 # HungerCore
 
-A Minecraft plugin for managing **Hunger Games / Hunger Craft 3** events.
+A Minecraft plugin for managing **Hunger Games ** events.
 
 ---
 
