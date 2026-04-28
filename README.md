@@ -1,169 +1,89 @@
 # HungerCore
 
-Un plugin de Minecraft para gestionar eventos de Hunger Games (Hunger Craft 3).
+A Minecraft plugin for managing **Hunger Games ** events.
 
-## Características
+---
 
-- **Gestión de Tributos**: Sistema para manejar tributos y sus estadísticas
-- **Sistema de Recompensas**: Recompensas por cabeza de tributos
-- **Gestión de Cofres**: Sistema de cofres con contenido aleatorio
-- **Puntos de Spawn**: Gestión de puntos de aparición para tributos
-- **Sistema de Temporizadores**: Temporizadores configurables para eventos
-- **Integración con PlaceholderAPI**: Placeholders para mostrar información en el chat
-- **Sistema de Muerte**: Los jugadores muertos se quedan en modo espectador en el lugar donde murieron
-- **Sistema de Equipos**: Integración con Lead-API para gestionar equipos de tributos
+## ✨ Features
 
-## Comandos
+- Tributes system (players tracking & stats)
+- Kill tracking
+- Bounty system (head rewards)
+- Random loot chests
+- Spawn points system
+- Lobby setup
+- Countdown & event timers
+- Death spectator system (players stay where they die)
+- PlaceholderAPI support
 
-- `/hc spawnpoints` - Gestionar puntos de spawn
-- `/hc chests` - Gestionar cofres de recursos
-- `/hc tributes` - Gestionar tributos
-- `/hc lobby` - Configurar ubicación del lobby
-- `/hc timer` - Configurar temporizadores
-- `/hc bounty` - Gestionar recompensas por cabeza
-- `/hc teams` - Gestionar equipos de tributos (nuevo)
-- `/hc revive <jugador>` - Revivir un jugador muerto (solo ops)
-- `/hc reviveall` - Revivir a todos los jugadores muertos (solo ops)
-- `/hc resetkills` - Resetear todas las kills (solo ops)
-- `/hc resetplayerkills <jugador>` - Resetear kills de un jugador específico (solo ops)
-- `/hc cleardeaths` - Limpiar todas las ubicaciones de muerte (solo ops)
-- `/hc updatealive` - Actualizar contador de jugadores vivos (solo ops)
+---
 
-## Comandos de Equipos (Lead-API)
+## ⚙️ Commands
 
-### `/hc teams create <jugador> <número>`
-Crea un equipo para un tributo con un número específico. El número debe ser un valor numérico válido.
+### Core
+- `/hc spawnpoints` — Manage spawn points
+- `/hc chests` — Manage loot chests
+- `/hc tributes` — Manage tributes
+- `/hc lobby` — Set lobby location
+- `/hc timer` — Configure timers
+- `/hc bounty` — Manage head bounties
 
-### `/hc teams list`
-Muestra todos los equipos creados.
+### Admin
+- `/hc revive <player>` — Revive a player (OP)
+- `/hc reviveall` — Revive all players (OP)
+- `/hc resetkills` — Reset all kills (OP)
+- `/hc resetplayerkills <player>` — Reset player kills (OP)
+- `/hc cleardeaths` — Clear death locations (OP)
+- `/hc updatealive` — Update alive counter (OP)
 
-### `/hc teams info <jugador>`
-Muestra información detallada del equipo de un jugador.
+---
 
-### `/hc teams delete <jugador>`
-Elimina el equipo de un jugador.
+## 🔤 Placeholders
 
-### `/hc teams add <jugador> <líder>`
-Agrega un jugador al equipo de un líder.
+- `%hc_tribute%` — Tribute number
+- `%hc_tributeid%` — Tribute ID
+- `%hc_kills%` — Player kills
+- `%hc_latest_death%` — Last death
+- `%hc_bounty%` — Active bounty target
+- `%hc_alive%` — Alive players count
 
-### `/hc teams remove <jugador>`
-Remueve un jugador de su equipo.
+---
 
-### `/hc teams random <tamaño>`
-Crea equipos aleatorios con el tamaño especificado. Ejemplos:
-- `/hc teams random 1` - Crea equipos de 1 jugador (individual)
-- `/hc teams random 4` - Crea equipos de 4 jugadores
-- `/hc teams random 5` - Crea equipos de 5 jugadores
-
-**Características:**
-- Distribuye automáticamente todos los jugadores online
-- Excluye jugadores que ya tienen equipos
-- Asigna líderes aleatoriamente
-- Muestra información detallada del proceso
-
-## Placeholders
-
-- `%hc_tribute%` - Número de tributo del jugador
-- `%hc_tributeid%` - ID del tributo
-- `%hc_kills%` - Número de asesinatos
-- `%hc_latest_death%` - Último jugador en morir
-- `%hc_bounty%` - Tributo con recompensa activa
-- `%hc_alive%` - Número total de jugadores vivos
-
-## Dependencias
+## 📦 Requirements
 
 - Paper 1.21+
-- PlaceholderAPI (opcional)
-- Lead (opcional) - Para funcionalidades de equipos
+- PlaceholderAPI (optional)
 
-## Instalación
+---
 
-1. Compila el proyecto con Gradle
-2. Coloca el JAR en la carpeta `plugins`
-3. Si quieres usar equipos, instala el plugin Lead
-4. Reinicia el servidor
+## 📥 Installation
 
-## Configuración
+1. Build the plugin using Gradle
+2. Place the `.jar` file into your `/plugins` folder
+3. Restart your server
+4. (Optional) install Lead-API for team features
 
-El plugin creará automáticamente los archivos de configuración:
-- `spawnpoints.yml` - Puntos de spawn
-- `chests.yml` - Configuración de cofres
-- `config.yml` - Configuración general
+---
 
-## Funcionalidades de Equipos
+## 📁 Config Files
 
-### Integración con Lead-API
-HungerCore ahora incluye integración completa con Lead-API, permitiendo:
+Generated automatically on first run:
 
-- **Creación automática de equipos**: Los tributos pueden ser asignados a equipos por distrito
-- **Gestión visual**: Los equipos se muestran con colores únicos en el tab y chat
-- **Puntos de spawn por equipo**: Cada equipo puede tener su propio punto de aparición
-- **Sistema de líderes**: Cada equipo tiene un líder que puede gestionar miembros
-- **Persistencia**: Los equipos se guardan automáticamente
+- `config.yml`
+- `spawnpoints.yml`
+- `chests.yml`
 
-### Casos de uso
-- **Alianzas temporales**: Los tributos pueden formar alianzas usando equipos
-- **Identificación visual**: Fácil identificación de tributos por colores
-- **Gestión de distritos**: Organización automática por distritos
-- **Chat de equipo**: Comunicación privada entre miembros del equipo
-- **Equipos aleatorios**: Creación automática de equipos con distribución aleatoria
-- **Flexibilidad de tamaño**: Equipos de 1 jugador (individual) hasta equipos grandes
+---
 
-### Notas importantes
-- **IDs numéricos**: Todos los equipos usan IDs numéricos para evitar errores de sorting en tab
-- **Números automáticos**: Los equipos aleatorios usan números automáticos para evitar conflictos
-- **Validación**: Se valida que todos los números de equipo sean valores numéricos válidos
+## 🧠 Notes
 
-## Desarrollo
+- Teams use numeric IDs for stability
+- Random teams auto-balance online players
+- Dead players remain in spectator mode at death location
 
-### Requisitos
-- Java 21+
-- Gradle 8.0+
+---
 
-### Compilación
+## 🛠 Build
+
 ```bash
 ./gradlew build
-```
-
-### Ejecución
-```bash
-./gradlew runServer
-```
-
-## Ejemplos de uso
-
-### Creación de equipos aleatorios
-```bash
-# Crear equipos de 4 jugadores para un evento
-/hc teams random 4
-
-# Crear equipos individuales (cada jugador por su cuenta)
-/hc teams random 1
-
-# Crear equipos de 5 jugadores para alianzas
-/hc teams random 5
-```
-
-### Gestión manual de equipos
-```bash
-# Crear un equipo específico con número
-/hc teams create PlayerName 1
-
-# Crear un equipo con número automático (para equipos aleatorios)
-/hc teams random 4
-
-# Agregar un jugador a un equipo existente
-/hc teams add NewPlayer LeaderName
-
-# Ver información de un equipo
-/hc teams info PlayerName
-
-# Listar todos los equipos
-/hc teams list
-```
-
-## Permisos
-
-- `hc` - Acceso básico a comandos
-- `hc.teams` - Acceso a comandos de equipos
-- `hc.admin` - Acceso a comandos administrativos 
