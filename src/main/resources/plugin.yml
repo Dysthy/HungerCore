@@ -1,0 +1,12 @@
+name: hungercore
+version: '1.0-SNAPSHOT'
+main: com.dysthy.hungerCore.HungerCore
+api-version: '1.21'
+authors: [ Neerixx ]
+description: Managament of Hunger Craft 3 event
+website: https://zgaming.cl
+softdepend: [PlaceholderAPI]
+commands:
+  hc:
+    description: Main command for configuration
+    permission: hc

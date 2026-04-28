@@ -1,0 +1,26 @@
+# Mecánicas opcionales del evento
+
+lifesteal:
+  # Si es true, al matar a un jugador (tributo) el asesino gana corazones extra de vida máxima y se cura.
+  enabled: false
+  # Corazones completos que se añaden por cada kill (1 corazón = 2 puntos de vida).
+  hearts-per-kill: 1
+  # Límite superior de puntos de vida máximos (20 = 10 corazones base; 40 = 20 corazones).
+  max-total-health: 40
+
+# Al eliminar a un tributo con un asesino (jugador). No aplica a muertes sin killer (caída, etc.).
+on-tribute-kill:
+  message:
+    # Si es true y "text" no está vacío, se envía el mensaje.
+    enabled: false
+    # "broadcast" = todos los online; "killer" = solo el asesino.
+    audience: broadcast
+    # Si es true, usa el prefijo HungerCraft (HcChat). Si es false, mensaje crudo (solo códigos §/& del texto).
+    use-prefix: true
+    # Códigos de color con & o §. Placeholders: {killer} {victim} {killer_uuid} {victim_uuid} {world}
+    text: "&e{killer}&f ha eliminado a &7{victim}&f!"
+  # Comandos sin barra inicial; por defecto se ejecutan como consola. Opcional: prefijo "killer:" o "console:" por línea.
+  # Ejemplos:
+  #   - "minecraft:experience add {killer} 5 points"
+  #   - "killer:say ¡Eliminación!"
+  commands: []

@@ -1,0 +1,33 @@
+# Configuración de ubicaciones para teleports por equipo
+# Este archivo se genera automáticamente la primera vez que se ejecuta el plugin
+
+# Ubicación del Cornucopia (centro del mapa)
+cornucopia:
+  x: 0
+  y: 64
+  z: 0
+  world: world
+  radius: 50.0  # Radio alrededor del cornucopia donde se colocan los equipos
+
+# Ubicación del Lobby
+lobby:
+  x: 0
+  y: 64
+  z: 100
+  world: world
+
+# Centro de la Arena
+arena:
+  x: 0
+  y: 64
+  z: 0
+  world: world
+  radius: 30.0  # Radio en la arena donde se colocan los equipos
+
+# Configuración para ubicaciones aleatorias
+random:
+  min_x: -1000  # Coordenada X mínima
+  max_x: 1000   # Coordenada X máxima
+  min_z: -1000  # Coordenada Z mínima
+  max_z: 1000   # Coordenada Z máxima
+  world: world  # Mundo donde se generan ubicaciones aleatorias

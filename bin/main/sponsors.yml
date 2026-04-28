@@ -1,0 +1,125 @@
+# Configuración de Items Patrocinables
+# Los jugadores muertos pueden enviar estos items a jugadores vivos
+
+items:
+  # Manzana Dorada - Curación instantánea
+  - material: GOLDEN_APPLE
+    amount: 1
+    name: "§6Manzana Dorada"
+    lore:
+      - "§7Curación instantánea"
+      - "§7y regeneración"
+
+  # Manzana Dorada Encantada - Curación mejorada
+  - material: ENCHANTED_GOLDEN_APPLE
+    amount: 1
+    name: "§6§lManzana Dorada Encantada"
+    lore:
+      - "§7Curación mejorada"
+      - "§7y efectos de regeneración"
+
+  # Espada de Diamante
+  - material: DIAMOND_SWORD
+    amount: 1
+    name: "§bEspada de Diamante"
+    enchantments:
+      - SHARPNESS:3
+      - UNBREAKING:2
+    lore:
+      - "§7Arma poderosa para"
+      - "§7combate cuerpo a cuerpo"
+
+  # Arco
+  - material: BOW
+    amount: 1
+    name: "§eArco"
+    enchantments:
+      - POWER:3
+      - PUNCH:1
+    lore:
+      - "§7Arma a distancia"
+      - "§7con encantamientos"
+
+  # Flechas
+  - material: ARROW
+    amount: 16
+    name: "§7Flechas"
+    lore:
+      - "§7Munición para arco"
+
+  # Armadura de Diamante - Casco
+  - material: DIAMOND_HELMET
+    amount: 1
+    name: "§bCasco de Diamante"
+    enchantments:
+      - PROTECTION:2
+      - UNBREAKING:2
+    lore:
+      - "§7Protección para la cabeza"
+
+  # Armadura de Diamante - Pechera
+  - material: DIAMOND_CHESTPLATE
+    amount: 1
+    name: "§bPechera de Diamante"
+    enchantments:
+      - PROTECTION:2
+      - UNBREAKING:2
+    lore:
+      - "§7Protección para el torso"
+
+  # Poción de Regeneración
+  - material: POTION
+    amount: 1
+    potion_type: REGENERATION
+    upgraded: true
+    name: "§dPoción de Regeneración"
+    lore:
+      - "§7Regenera salud con el tiempo"
+
+  # Poción de Fuerza
+  - material: POTION
+    amount: 1
+    potion_type: STRENGTH
+    upgraded: true
+    name: "§cPoción de Fuerza"
+    lore:
+      - "§7Aumenta el daño"
+
+  # Comida - Carne Cocida
+  - material: COOKED_BEEF
+    amount: 8
+    name: "§6Carne Cocida"
+    lore:
+      - "§7Restaura hambre"
+
+  # Comida - Pan
+  - material: BREAD
+    amount: 8
+    name: "§ePan"
+    lore:
+      - "§7Restaura hambre"
+
+  # Bloque de TNT
+  - material: TNT
+    amount: 4
+    name: "§cTNT"
+    lore:
+      - "§7Explosivo útil para"
+      - "§7estrategias"
+
+  # Ender Pearl
+  - material: ENDER_PEARL
+    amount: 2
+    name: "§5Perla de Ender"
+    lore:
+      - "§7Teletransportación"
+      - "§7instantánea"
+
+  # Brújula
+  - material: COMPASS
+    amount: 1
+    name: "§eBrújula"
+    lore:
+      - "§7Apunta al punto de"
+      - "§7respawn"
+
