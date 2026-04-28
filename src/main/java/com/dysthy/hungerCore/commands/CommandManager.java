@@ -9,6 +9,7 @@ import com.dysthy.hungerCore.commands.subcommands.ReviveAllCommand;
 import com.dysthy.hungerCore.commands.subcommands.ResetKillsCommand;
 import com.dysthy.hungerCore.commands.subcommands.ResetPlayerKillsCommand;
 import com.dysthy.hungerCore.commands.subcommands.SpawnpointCommand;
+import com.dysthy.hungerCore.commands.subcommands.TeamsCommand;
 import com.dysthy.hungerCore.commands.subcommands.UpdateAliveCommand;
 import com.dysthy.hungerCore.commands.subcommands.TimerCommand;
 import com.dysthy.hungerCore.commands.subcommands.TributesCommand;
@@ -45,10 +46,11 @@ public class CommandManager implements CommandExecutor, TabExecutor, TabComplete
       this.subCommands.put("resetkills", new ResetKillsCommand());
       this.subCommands.put("resetplayerkills", new ResetPlayerKillsCommand());
       this.subCommands.put("cleardeaths", new ClearDeathsCommand());
-      this.subCommands.put("updatealive", new UpdateAliveCommand());
-      this.subCommands.put("border", new BorderCommand());
-      this.subCommands.put("removeplayer", new RemovePlayerCommand());
-      this.subCommands.put("sponsor", new SponsorCommand());
+       this.subCommands.put("updatealive", new UpdateAliveCommand());
+       this.subCommands.put("border", new BorderCommand());
+       this.subCommands.put("removeplayer", new RemovePlayerCommand());
+       this.subCommands.put("teams", new TeamsCommand());
+       this.subCommands.put("sponsor", new SponsorCommand());
       Iterator var2 = this.subCommands.values().iterator();
       while(var2.hasNext()) {
          SubCommand subCommand = (SubCommand)var2.next();

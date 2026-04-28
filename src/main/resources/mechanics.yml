@@ -8,6 +8,17 @@ lifesteal:
   # Límite superior de puntos de vida máximos (20 = 10 corazones base; 40 = 20 corazones).
   max-total-health: 40
 
+# Recompensas por eliminar al jugador con bounty activo
+bounty-rewards:
+  # Si es true, se aplican las recompensas al matar al bounty target
+  enabled: true
+  # Restaurar vida al máximo al asesino
+  heal: true
+  # Restaurar hambre al máximo al asesino
+  feed: true
+  # Corazones permanentes adicionales (0 para desactivar)
+  bonus-hearts: 2
+
 # Al eliminar a un tributo con un asesino (jugador). No aplica a muertes sin killer (caída, etc.).
 on-tribute-kill:
   message:

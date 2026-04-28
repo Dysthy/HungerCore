@@ -1,9 +1,10 @@
 package com.dysthy.hungerCore.config;
+import com.dysthy.hungerCore.commands.subcommands.BountyCommand;
 import com.dysthy.hungerCore.util.HcChat;
 import com.dysthy.hungerCore.utils.IFileConfiguration;
 import org.bukkit.Bukkit;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.ChatColor;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.command.CommandException;
 import org.bukkit.entity.Player;
@@ -11,7 +12,6 @@ import org.bukkit.plugin.Plugin;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
-
 public class MechanicsConfig {
     private static final MechanicsConfig INSTANCE = new MechanicsConfig();
     private IFileConfiguration config;
@@ -30,37 +30,33 @@ public class MechanicsConfig {
             this.config.reload();
         }
     }
-    
     public void onTributeKill(Player killer, Player victim) {
         if (killer == null || victim == null) {
             return;
         }
         this.applyLifestealReward(killer);
+        this.applyBountyReward(killer, victim);
         this.sendKillMessage(killer, victim);
         this.runKillCommands(killer, victim);
     }
-    
     public boolean isLifestealEnabled() {
         if (this.config == null) {
             return false;
         }
         return this.config.getBoolean("lifesteal.enabled", false);
     }
-    
     public double getLifestealHeartsPerKill() {
         if (this.config == null) {
             return 0.0;
         }
         return this.config.getDouble("lifesteal.hearts-per-kill", 1.0);
     }
-    
     public double getLifestealMaxTotalHealth() {
         if (this.config == null) {
             return 20.0;
         }
         return this.config.getDouble("lifesteal.max-total-health", 40.0);
     }
-    
     public void applyLifestealReward(Player killer) {
         if (killer == null || !this.isLifestealEnabled()) {
             return;
@@ -86,6 +82,56 @@ public class MechanicsConfig {
         maxHealthAttr.setBaseValue(newBase);
         double newHealth = Math.min(killer.getHealth() + bonusHp, newBase);
         killer.setHealth(newHealth);
+    }
+    public void applyBountyReward(Player killer, Player victim) {
+        if (killer == null || victim == null || this.config == null) {
+            return;
+        }
+        if (!this.config.getBoolean("bounty-rewards.enabled", false)) {
+            return;
+        }
+        if (BountyCommand.tributeWanted == null || !victim.getName().equalsIgnoreCase(BountyCommand.tributeWanted)) {
+            return;
+        }
+        if (killer.isOp()) {
+            return;
+        }
+        boolean heal = this.config.getBoolean("bounty-rewards.heal", true);
+        boolean feed = this.config.getBoolean("bounty-rewards.feed", true);
+        double bonusHearts = this.config.getDouble("bounty-rewards.bonus-hearts", 2.0);
+        if (heal) {
+            AttributeInstance maxHealthAttr = killer.getAttribute(Attribute.MAX_HEALTH);
+            if (maxHealthAttr != null) {
+                killer.setHealth(maxHealthAttr.getBaseValue());
+            }
+        }
+        if (feed) {
+            killer.setFoodLevel(20);
+            killer.setSaturation(20.0f);
+        }
+        if (bonusHearts > 0.0) {
+            double bonusHp = bonusHearts * 2.0;
+            AttributeInstance maxHealthAttr = killer.getAttribute(Attribute.MAX_HEALTH);
+            if (maxHealthAttr != null) {
+                double cap = Math.max(2.0, this.getLifestealMaxTotalHealth());
+                double currentBase = maxHealthAttr.getBaseValue();
+                double newBase = Math.min(currentBase + bonusHp, cap);
+                if (newBase > currentBase) {
+                    maxHealthAttr.setBaseValue(newBase);
+                    killer.setHealth(Math.min(killer.getHealth() + bonusHp, newBase));
+                }
+            }
+        }
+        HcChat.accent(killer, "Recompensa de bounty · " + victim.getName() + " eliminado");
+        if (heal) {
+            HcChat.success(killer, "Vida restaurada al maximo");
+        }
+        if (feed) {
+            HcChat.success(killer, "Hambre saciada");
+        }
+        if (bonusHearts > 0.0) {
+            HcChat.success(killer, "+" + bonusHearts + " corazones permanentes");
+        }
     }
     private void sendKillMessage(Player killer, Player victim) {
         if (this.config == null) {
@@ -153,13 +199,12 @@ public class MechanicsConfig {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), withoutSlash);
                 }
             } catch (CommandException ex) {
-                Bukkit.getLogger().log(Level.WARNING, "[HungerCore] Comando on-tribute-kill falló: " + withoutSlash, ex);
+                Bukkit.getLogger().log(Level.WARNING, "[HungerCore] Comando on-tribute-kill fallo: " + withoutSlash, ex);
             } catch (Throwable t) {
                 Bukkit.getLogger().log(Level.WARNING, "[HungerCore] Error ejecutando comando on-tribute-kill: " + withoutSlash, t);
             }
         }
     }
-    
     public String interpolate(Player killer, Player victim, String template) {
         if (template == null) {
             return "";
